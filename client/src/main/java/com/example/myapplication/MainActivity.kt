@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.aidlserver.IRemoteService
+import com.example.aidlserver.ServiceData
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,10 +37,24 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { view ->
             iRemoteService?.data?.let {
 
-                Snackbar.make(view, it.value, Snackbar.LENGTH_LONG)
+                Snackbar.make(view, it.value ?: "", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             }
 
+            val data = ServiceData("hello variable in")
+            iRemoteService?.updateDataIn(data)
+            println(data.value)
+
+
+            val data2 = ServiceData("hello variable out")
+            iRemoteService?.updateDataOut(data2)
+            println(data2.value)
+
+
+
+            val data3 = ServiceData("hello variable Inout")
+            iRemoteService?.updateDataInOut(data3)
+            println(data3.value)
         }
     }
 

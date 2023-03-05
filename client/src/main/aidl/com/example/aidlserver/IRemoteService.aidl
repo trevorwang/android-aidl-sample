@@ -12,4 +12,8 @@ interface IRemoteService {
     void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
             double aDouble, String aString);
     ServiceData getData();
+
+    void updateDataIn(in ServiceData data);
+    void updateDataOut(out ServiceData data);
+    void updateDataInOut(inout ServiceData data);
 }

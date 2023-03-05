@@ -22,6 +22,27 @@ class RemoteService : Service() {
                 println("called in getData")
                 return ServiceData("data from remote service")
             }
+
+            override fun updateDataIn(data: ServiceData?) {
+                data?.let {
+                    println( it.value)
+                   it.value = "xxxxxxxxxxxx"
+                }
+            }
+
+            override fun updateDataOut(data: ServiceData?) {
+                data?.let {
+                    println( it.value)
+                    it.value = "updateDataOut"
+                }
+            }
+
+            override fun updateDataInOut(data: ServiceData?) {
+                data?.let {
+                    println( it.value)
+                    it.value = "updateDataInOut"
+                }
+            }
         }
     }
 
